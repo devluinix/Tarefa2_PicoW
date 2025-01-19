@@ -34,22 +34,22 @@ void apagar_leds()
 void controlar_led(const char *comando)
 {
     apagar_leds();
-    if (strcmp(comando, "verde") == 0)
+    if (strcmp(comando, "green") == 0)
     {
         gpio_put(LED_VERDE, 1);
         printf("LED verde acionado.\n");
     }
-    else if (strcmp(comando, "azul") == 0)
+    else if (strcmp(comando, "blue") == 0)
     {
         gpio_put(LED_AZUL, 1);
         printf("LED azul acionado.\n");
     }
-    else if (strcmp(comando, "vermelho") == 0)
+    else if (strcmp(comando, "red") == 0)
     {
         gpio_put(LED_VERMELHO, 1);
         printf("LED vermelho acionado.\n");
     }
-    else if (strcmp(comando, "branco") == 0)
+    else if (strcmp(comando, "white") == 0)
     {
         gpio_put(LED_VERDE, 1);
         gpio_put(LED_AZUL, 1);
@@ -86,12 +86,13 @@ int main()
         // Verifica se o caractere é Enter (nova linha ou retorno de carro)
         if (ch == '\n' || ch == '\r')
         {
+            printf("\nComando recebido: %s\n", comando);
             comando[comando_index] = '\0'; // Finaliza a string
             comando_index = 0;             // Reseta o índice para o próximo comando
 
             // Executa a ação baseada no comando recebido
-            if (strcmp(comando, "verde") == 0 || strcmp(comando, "azul") == 0 ||
-                strcmp(comando, "vermelho") == 0 || strcmp(comando, "branco") == 0)
+            if (strcmp(comando, "green") == 0 || strcmp(comando, "blue") == 0 ||
+                strcmp(comando, "red") == 0 || strcmp(comando, "white") == 0)
             {
                 controlar_led(comando);
             }
